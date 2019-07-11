@@ -1,4 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
+import { updateObject } from '../utility';
 
 const initialState = {
     ingredients : null,
@@ -16,14 +17,15 @@ const INGREDIENT_PRICES = {
 const reducer = (state = initialState, action) => {
     switch(action.type) {
         case actionTypes.ADD_INGREDIENT:
-            return {
-                ...state,
-                ingredients: {
-                    ...state.ingredients,
-                    [action.ingredientName]: state.ingredients[action.ingredientName] + 1
-                },
+            //Updating the state using the utility function
+            const updatedIngredient = {[action.ingredientName]: state.ingredients[action.ingredientName] + 1};
+            const updatedIngredients = updateObject(state.ingredients, updatedIngredient);
+            const updatedState = {
+                ingredients: updatedIngredients,
                 totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName]
-            };
+
+            }
+            return updateObject(state, updatedState);
         case actionTypes.REMOVE_INGREDIENT:
             return {
                 ...state,
@@ -37,7 +39,8 @@ const reducer = (state = initialState, action) => {
                 return {
                     ...state,
                     ingredients: action.ingredients,
-                    error: false
+                    error: false,
+                    totalPrice: 4
                 };
             case actionTypes.FETCH_INGREDIENTS_FAILED:
                 return {
