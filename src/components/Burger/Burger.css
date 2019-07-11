@@ -3,6 +3,7 @@
     margin: auto;
     height: 250px;
     text-align: center;
+    overflow-y: auto;
     font-weight: bold;
     font-size: 1.2rem;
 }
@@ -27,3 +28,8 @@
         height: 300px;
     }
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 0;
+  }
