@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/d-klotz/burger-builder.svg?branch=master)](https://travis-ci.org/d-klotz/burger-builder)
+
 # burger-builder
 A hamburger builder made with ReactJs
     
