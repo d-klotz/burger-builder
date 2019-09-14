@@ -6,27 +6,57 @@ import axios from '../../axios-orders';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import * as actions from '../../store/actions/index';
 import Spinner from '../../components/UI/Spinner/Spinner';
+import Pagination from '../../components/UI/Pagination/Pagination';
 
 class Orders extends Component {
+
+    state = {
+        itemsPerPage: 3,
+        activePage: 0,
+        paginatedOrders: []
+    }
 
     componentDidMount() {
        this.props.onFetchOrders(this.props.token, this.props.userId);
     }
 
+    setPageNumber = (currentPage) => {
+        const paginatedOrders = this.props.orders
+            .slice(currentPage * this.state.itemsPerPage, this.state.itemsPerPage * (currentPage + 1));
+        this.setState({
+            ...this.state,
+            activePage: currentPage,
+            paginatedOrders: paginatedOrders
+        }); 
+    }
+
     render() {
+
         let orders = <Spinner />;
 
         if (!this.props.loading) {
-            orders = this.props.orders.map(order => (
-                    <Order 
-                        key={order.id}
-                        ingredients={order.ingredients}
-                        price={+order.price} />
-                ));
+
+            if (this.state.paginatedOrders.length > 0) {
+                orders = this.state.paginatedOrders.map(order => (
+                        <Order 
+                            key={order.id}
+                            ingredients={order.ingredients}
+                            price={+order.price} />
+                    ));
+            } else {
+                this.setPageNumber(0);
+            }
+
         }
         return (
             <div>
                 {orders}
+                <Pagination
+                    totalPages={Math.ceil(this.props.orders.length / this.state.itemsPerPage)}
+                    activePage={this.state.activePage}
+                    clicked={this.setPageNumber}>
+                </Pagination>
+
             </div>
         )
     }
