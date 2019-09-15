@@ -6,3 +6,11 @@
     margin: 10px auto;
     box-sizing: border-box;
 }
+
+.AlignRight {
+    text-align: right;
+}
+
+.CursorPointer {
+    cursor: pointer;
+}
