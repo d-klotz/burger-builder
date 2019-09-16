@@ -76,16 +76,24 @@ class Orders extends Component {
                     <Aux>
                         <div className={classes.Details}>
                             <p>
-                                <span className={classes.DetailsTitle}>Customer: </span><span>{selectedOrder.orderData.name}</span>
+                                <span className={classes.DetailsTitle}>Customer: </span>
+                                    <span>{selectedOrder.orderData.name}</span>
                             </p>
                             <p>
-                                <span className={classes.DetailsTitle}>E-mail: </span><span>{selectedOrder.orderData.email}</span>
+                                <span className={classes.DetailsTitle}>E-mail: </span>
+                                    <span>{selectedOrder.orderData.email}</span>
                             </p>
                             <p>
-                                <span className={classes.DetailsTitle}>Address: </span><span>{selectedOrder.orderData.street} {selectedOrder.orderData.zipCode} {selectedOrder.orderData.country}</span>
+                                <span className={classes.DetailsTitle}>Address: </span>
+                                    <span>
+                                        {selectedOrder.orderData.street},
+                                        {selectedOrder.orderData.zipCode}, 
+                                        {selectedOrder.orderData.country}
+                                    </span>
                             </p>
                             <p>
-                                <span className={classes.DetailsTitle}>Delivery Method: </span><span>{selectedOrder.orderData.deliveryMethod}</span>
+                                <span className={classes.DetailsTitle}>Delivery Method: </span>
+                                    <span>{selectedOrder.orderData.deliveryMethod}</span>
                             </p>
                         </div>
                     </Aux>
