@@ -1,0 +1,22 @@
+.Badge {
+  color: #FFFF;
+  font-size: 14px;
+  padding: 4px;
+  border-radius: 10px;
+}
+
+.Orange {
+  background: #f57953;
+}
+
+.Green {
+  background: #2bad41;
+}
+
+.Blue {
+  background: #487dcc;
+}
+
+.Red {
+  background: #c73642;
+}

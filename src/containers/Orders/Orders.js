@@ -11,6 +11,7 @@ import Aux from '../../hoc/Auxiliary';
 import Modal from '../../components/UI/Modal/Modal';
 import Button from '../../components/UI/Button/Button';
 import classes from './Orders.css';
+import Badge from '../../components/UI/Badge/Badge';
 
 class Orders extends Component {
 
@@ -86,14 +87,17 @@ class Orders extends Component {
                             <p>
                                 <span className={classes.DetailsTitle}>Address: </span>
                                     <span>
-                                        {selectedOrder.orderData.street},
-                                        {selectedOrder.orderData.zipCode}, 
-                                        {selectedOrder.orderData.country}
+                                        {`${selectedOrder.orderData.street}, `}
+                                        {`${selectedOrder.orderData.zipCode}, `} 
+                                        {`${selectedOrder.orderData.country}`}
                                     </span>
                             </p>
                             <p>
                                 <span className={classes.DetailsTitle}>Delivery Method: </span>
-                                    <span>{selectedOrder.orderData.deliveryMethod}</span>
+                                    <Badge 
+                                        child={selectedOrder.orderData.deliveryMethod} 
+                                        badgeStyle={selectedOrder.orderData.deliveryMethod === 'cheapest' ? 'Green' :'Orange'}
+                                    />
                             </p>
                         </div>
                     </Aux>
