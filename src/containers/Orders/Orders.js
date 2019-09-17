@@ -94,10 +94,10 @@ class Orders extends Component {
                             </p>
                             <p>
                                 <span className={classes.DetailsTitle}>Delivery Method: </span>
-                                    <Badge 
-                                        child={selectedOrder.orderData.deliveryMethod} 
-                                        badgeStyle={selectedOrder.orderData.deliveryMethod === 'cheapest' ? 'Green' :'Orange'}
-                                    />
+                                <Badge 
+                                    child={selectedOrder.orderData.deliveryMethod} 
+                                    badgeStyle={selectedOrder.orderData.deliveryMethod === 'cheapest' ? 'Green' :'Orange'}
+                                />
                             </p>
                         </div>
                     </Aux>
